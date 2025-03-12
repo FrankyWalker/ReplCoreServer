@@ -1,0 +1,79 @@
+{
+  "instruction": "Complete the following tasks by writing code and ensuring all functionality works as specified.",
+  "tasks": [
+    {
+      "task_id": 1,
+      "task_name": "Task 1",
+      "description": "This task involves implementing basic Rust functionality to print a welcome message and perform a simple computation.",
+      "completed": false,
+      "starter_code": {
+        "main_rs": "fn main() {\n    println!(\"Welcome to Task 1!\");\n    let sum = 2 + 2;\n    println!(\"2 + 2 = {}\", sum);\n}",
+        "cargo_toml": "[package]\nname = \"task_1\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\n"
+      },
+      "expected_output": [
+        "Welcome to Task 1!",
+        "2 + 2 = 4"
+      ]
+    },
+    {
+      "task_id": 2,
+      "task_name": "Task 2",
+      "description": "This task requires implementing a factorial function and handling edge cases like 0 and negative inputs. The function should take an integer input and return its factorial. If the input is negative, return an error message instead.",
+      "completed": false,
+      "starter_code": {
+        "main_rs": "fn factorial(num: i32) -> i32 {\n    if num <= 1 {\n        return 1;\n    }\n    num * factorial(num - 1)\n}\n\nfn main() {\n    println!(\"Factorial of 5 is: {}\", factorial(5));\n}",
+        "cargo_toml": "[package]\nname = \"task_2\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\n"
+      },
+      "expected_output": [
+        "Factorial of 5 is: 120"
+      ]
+    },
+    {
+      "task_id": 3,
+      "task_name": "Task 3",
+      "description": "This task involves reading user input, parsing numbers, and performing basic arithmetic operations. The program should prompt the user to enter a number, parse the input as an integer, and display the square of the number. If the input is invalid, an error message should be displayed.",
+      "completed": false,
+      "starter_code": {
+        "main_rs": "use std::io;\nfn main() {\n    let mut input = String::new();\n    println!(\"Enter a number:\");\n    io::stdin().read_line(&mut input).expect(\"Failed to read input\");\n    let number: i32 = input.trim().parse().expect(\"Please enter a valid number\");\n    println!(\"You entered: {}\", number);\n    println!(\"Square of {}: {}\", number, number * number);\n}",
+        "cargo_toml": "[package]\nname = \"task_3\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\n"
+      },
+      "expected_output": [
+        "Enter a number:",
+        "You entered: 4",
+        "Square of 4: 16"
+      ]
+    },
+    {
+      "task_id": 4,
+      "task_name": "Complicated Task",
+      "description": "This is a more complex task that involves implementing a basic inventory management system using structs and vectors. The system should allow adding new items, searching for items by name, and displaying all items. The search function should return the details of the item if found or indicate that the item does not exist.",
+      "completed": false,
+      "starter_code": {
+        "main_rs": "struct Item {\n    id: u32,\n    name: String,\n    quantity: u32,\n}\n\nfn add_item(id: u32, name: &str, quantity: u32, inventory: &mut Vec<Item>) {\n    inventory.push(Item {\n        id,\n        name: String::from(name),\n        quantity,\n    });\n    println!(\"Added item: {} (Qty: {})\", name, quantity);\n}\n\nfn display_items(inventory: &Vec<Item>) {\n    println!(\"Inventory:\");\n    for item in inventory {\n        println!(\"ID: {}, Name: {}, Quantity: {}\", item.id, item.name, item.quantity);\n    }\n}\n\nfn main() {\n    let mut inventory: Vec<Item> = Vec::new();\n\n    add_item(1, \"Apple\", 10, &mut inventory);\n    add_item(2, \"Banana\", 20, &mut inventory);\n\n    display_items(&inventory);\n}",
+        "cargo_toml": "[package]\nname = \"complicated_task\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\n"
+      },
+      "expected_output": [
+        "Added item: Apple (Qty: 10)",
+        "Added item: Banana (Qty: 20)",
+        "Inventory:",
+        "ID: 1, Name: Apple, Quantity: 10",
+        "ID: 2, Name: Banana, Quantity: 20"
+      ]
+    },
+    {
+      "task_id": 5,
+      "task_name": "Task 5",
+      "description": "This task involves implementing a basic sorting algorithm (e.g., bubble sort) and printing the sorted results. The program should sort an array of integers and display the array before and after sorting.",
+      "completed": false,
+      "starter_code": {
+        "main_rs": "fn bubble_sort(arr: &mut Vec<i32>) {\n    let n = arr.len();\n    for i in 0..n {\n        for j in 0..n-i-1 {\n            if arr[j] > arr[j + 1] {\n                arr.swap(j, j + 1);\n            }\n        }\n    }\n}\n\nfn main() {\n    let mut numbers = vec![5, 2, 9, 1, 5, 6];\n    println!(\"Before sort: {:?}\", numbers);\n    bubble_sort(&mut numbers);\n    println!(\"After sort: {:?}\", numbers);\n}",
+        "cargo_toml": "[package]\nname = \"task_5\"\nversion = \"0.1.0\"\nedition = \"2021\"\n\n[dependencies]\n"
+      },
+      "expected_output": [
+        "Before sort: [5, 2, 9, 1, 5, 6]",
+        "After sort: [1, 2, 5, 5, 6, 9]"
+      ]
+    }
+  ],
+  "last_completed_task_id": 0
+}
