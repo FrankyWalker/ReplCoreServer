@@ -51,10 +51,6 @@ popd() {
 cd /usr/src/app
 `;
 
-/**
- * Script to setup the container environment
- * This includes all the security measures and setup steps
- */
 const setupContainerScript = `
 # Update and install necessary packages
 apt-get update && apt-get install -y \\
@@ -92,8 +88,8 @@ echo '${restrictDirectoryScript}' >> ~/.bashrc
 echo '${restrictDirectoryScript}' >> ~/.zshrc
 
 # Add custom prompt showing restricted environment
-echo 'PS1="Project \$ "' >> ~/.bashrc
-echo 'PROMPT="Project %# "' >> ~/.zshrc
+// echo 'PS1="Workplace \$ "' >> ~/.bashrc
+// echo 'PROMPT="Workplace %> "' >> ~/.zshrc
 
 # Remove potentially dangerous commands
 for cmd in chmod chown sudo su; do
@@ -104,13 +100,15 @@ done
 
 # Create a message of the day to remind users about restrictions
 echo '
-===============================================
-🚨 SECURE RUST SANDBOX ENVIRONMENT 🚨
-===============================================
-• You are in a restricted Docker container
-• Navigation outside the Rust project is not allowed
-• This environment is for educational purposes only
-===============================================
+=======================================
+  WELCOME TO THE TERMINAL  
+=======================================
+
+=======================================
+• This is your interactive terminal
+• Stay within environment 🫶
+=======================================
+
 ' > /etc/motd
 
 # Display MOTD on login
